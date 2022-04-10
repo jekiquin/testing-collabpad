@@ -9,7 +9,7 @@ const MAXLENGTH = 255;
 export default function ThoughtInput() {
 	const [inputText, setInputText] = useState('');
 	const [inputTitle, setInputTitle] = useState('');
-	const [, setJournal] = useJournal();
+	const [journal, setJournal] = useJournal();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -34,9 +34,9 @@ export default function ThoughtInput() {
 	};
 
 	return (
-		<form className="AddThought" onSubmit={handleSubmit}>
+		<form className="ThoughtInput" onSubmit={handleSubmit}>
 			<input
-				className="AddThought__title"
+				className="ThoughtInput__title"
 				id="title"
 				type="text"
 				placeholder="Title"
@@ -46,18 +46,17 @@ export default function ThoughtInput() {
 			/>
 			<textarea
 				id="thought"
-				className="AddThought__input"
+				className="ThoughtInput__input"
 				placeholder="Add a thought"
 				maxLength={MAXLENGTH}
 				value={inputText}
 				onChange={handleOnChange(setInputText)}
 				required></textarea>
-			<p className="AddThought__counter">
+			<p className="ThoughtInput__counter">
 				{inputText.length}/{MAXLENGTH}
 			</p>
-			<button className="AddThought__submit" type="submit">
-				Add Thought
-			</button>
+
+			<input className="ThoughtInput__button" type="submit" value="Add Thought" />
 		</form>
 	);
 }

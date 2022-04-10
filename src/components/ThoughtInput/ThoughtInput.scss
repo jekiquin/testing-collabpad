@@ -1,4 +1,4 @@
-.AddThought {
+.ThoughtInput {
 	width: 70%;
 	margin: 0 auto;
 	display: flex;
@@ -15,11 +15,11 @@
 		padding: 0.25rem;
 	}
 
-	&__submit {
+	&__button {
 		margin-top: 1rem;
-		width: max-content;
-		padding: 0.125rem 0.5rem;
 		align-self: flex-end;
+		padding: 0.125rem 0.25rem;
+		cursor: pointer;
 	}
 
 	&__counter {
