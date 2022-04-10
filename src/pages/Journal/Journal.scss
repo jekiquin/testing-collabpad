@@ -1,0 +1,5 @@
+@use '../../partial-styles/placeholders' as *;
+
+.Journal {
+	@extend %container;
+}
