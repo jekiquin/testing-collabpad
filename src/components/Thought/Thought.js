@@ -1,8 +1,9 @@
+import React from 'react';
 import { useMemo } from 'react';
 import moment from 'moment';
 import './Thought.scss';
 
-export default function Thought({ thoughtObj }) {
+function Thought({ thoughtObj }) {
 	const { id, title, thought, timestamp } = thoughtObj;
 	const displayTimestamp = moment(timestamp).format('MMM DD, YYYY hh:mm:ss');
 
@@ -28,3 +29,5 @@ export default function Thought({ thoughtObj }) {
 		</article>
 	);
 }
+
+export default React.memo(Thought);
