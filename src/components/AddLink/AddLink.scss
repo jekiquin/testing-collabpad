@@ -1,0 +1,13 @@
+@use '../../partial-styles/placeholders' as *;
+
+.AddLinks {
+	&__selection {
+		margin-right: 0.5rem;
+		padding: 0.125rem 0.25rem;
+		width: 50%;
+	}
+
+	&__button {
+		@extend %button;
+	}
+}

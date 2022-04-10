@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useJournal } from '../../context/journal-context';
+import './AddLink.scss';
 
 export default function AddLink({ setInputText }) {
 	const [selectedOption, setSelectedOption] = useState('');
@@ -29,14 +30,24 @@ export default function AddLink({ setInputText }) {
 	);
 
 	return (
-		<div>
-			<select name="links" id="links-select" value={selectedOption} onChange={handleChange}>
+		<div className="AddLinks">
+			<select
+				className="AddLinks__selection"
+				name="links"
+				id="links-select"
+				value={selectedOption}
+				onChange={handleChange}>
 				<option value="" disabled>
 					--Add Link--
 				</option>
 				{displayOptions}
 			</select>
-			<input type="button" value="Add Link" onClick={handleClick} />
+			<input
+				className="AddLinks__button"
+				type="button"
+				value="Add Link"
+				onClick={handleClick}
+			/>
 		</div>
 	);
 }
