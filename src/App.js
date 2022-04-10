@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import MainNav from './components/MainNav/MainNav';
 import Journal from './pages/Journal/Journal';
 
@@ -8,6 +8,7 @@ function App() {
 			<MainNav />
 			<Routes>
 				<Route path="/journal" element={<Journal />} />
+				<Route path="/" element={<Navigate to="/journal" replace />} />
 			</Routes>
 		</div>
 	);
