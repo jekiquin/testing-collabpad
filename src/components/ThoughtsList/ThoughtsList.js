@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useJournal } from '../../context/journal-context';
 import Thought from '../Thought/Thought';
+import './ThoughtList.scss';
 
 export default function ThoughtsList() {
 	const [journal] = useJournal();
@@ -10,5 +11,5 @@ export default function ThoughtsList() {
 		[journal]
 	);
 
-	return <div>{displayThoughts}</div>;
+	return <section className="ThoughtList">{displayThoughts}</section>;
 }

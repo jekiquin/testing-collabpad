@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import moment from 'moment';
 import MainNav from './components/MainNav/MainNav';
 import { useJournal } from './context/journal-context';
 import Journal from './pages/Journal/Journal';
@@ -9,7 +10,10 @@ function App() {
 	const [, setJournal] = useJournal();
 
 	useEffect(() => {
-		setJournal(dummyJournal);
+		const sortedJournal = dummyJournal.sort(
+			(a, b) => moment(b.timestamp) - moment(a.timestamp)
+		);
+		setJournal(sortedJournal);
 	}, []);
 
 	return (

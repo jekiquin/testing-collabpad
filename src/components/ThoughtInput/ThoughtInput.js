@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useJournal } from '../../context/journal-context';
 import uniqid from 'uniqid';
 import moment from 'moment';
-import './AddThought.scss';
+import './ThoughtInput.scss';
 
 const MAXLENGTH = 255;
 
-export default function AddThought() {
+export default function ThoughtInput() {
 	const [inputText, setInputText] = useState('');
 	const [inputTitle, setInputTitle] = useState('');
 	const [, setJournal] = useJournal();
@@ -14,14 +14,15 @@ export default function AddThought() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
+		const newThought = {
+			id: uniqid(),
+			title: e.target.title.value,
+			thought: e.target.thought.value,
+			timestamp: moment.utc(moment.now()).format()
+		};
+
 		setJournal((prevJournal) => {
-			const newJournal = {
-				id: uniqid(),
-				title: e.target.title.value,
-				thought: e.target.thought.value,
-				timestamp: moment.utc(moment.now()).format()
-			};
-			return [newJournal, ...prevJournal];
+			return [newThought, ...prevJournal];
 		});
 
 		setInputText('');

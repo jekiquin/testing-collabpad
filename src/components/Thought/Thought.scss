@@ -1,0 +1,14 @@
+.Thought {
+	border: 1px solid;
+	border-radius: 4px;
+	box-shadow: 2px 2px 5px rgba(black, 0.5);
+	padding: 1rem;
+
+	&__timestamp {
+		font-weight: 400;
+		font-size: 0.8rem;
+		color: rgba(black, 0.8);
+		text-align: end;
+		margin-top: 1rem;
+	}
+}
