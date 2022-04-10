@@ -1,0 +1,26 @@
+.AddThought {
+	width: 70%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+
+	&__input {
+		resize: none;
+		height: 5rem;
+		padding: 0.25rem;
+	}
+
+	&__submit {
+		margin-top: 1rem;
+		width: max-content;
+		padding: 0.125rem 0.5rem;
+		align-self: flex-end;
+	}
+
+	&__counter {
+		align-self: flex-end;
+		color: rgba(black, 0.7);
+		font-size: 0.8rem;
+		margin-top: 0.25rem;
+	}
+}
