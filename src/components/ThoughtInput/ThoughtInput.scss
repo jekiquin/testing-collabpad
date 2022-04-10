@@ -1,8 +1,26 @@
 .ThoughtInput {
-	width: 70%;
-	margin: 0 auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	width: 100vw;
+	height: 100vh;
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(black, 0.4);
+
+	&__form {
+		width: 70%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		border: 1px solid;
+		border-radius: 4px;
+		box-shadow: 2px 2px 5px rgba(black, 0.5);
+		background-color: white;
+		padding: 2rem;
+	}
 
 	&__title {
 		margin-bottom: 1rem;
@@ -15,9 +33,14 @@
 		padding: 0.25rem;
 	}
 
-	&__button {
+	&__button-group {
 		margin-top: 1rem;
-		align-self: flex-end;
+		display: flex;
+		justify-content: flex-end;
+		gap: 0.5rem;
+	}
+
+	&__button {
 		padding: 0.125rem 0.25rem;
 		cursor: pointer;
 	}

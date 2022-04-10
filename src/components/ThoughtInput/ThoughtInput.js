@@ -6,10 +6,10 @@ import './ThoughtInput.scss';
 
 const MAXLENGTH = 255;
 
-export default function ThoughtInput() {
+export default function ThoughtInput({ setShowModal }) {
 	const [inputText, setInputText] = useState('');
 	const [inputTitle, setInputTitle] = useState('');
-	const [journal, setJournal] = useJournal();
+	const [, setJournal] = useJournal();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -27,36 +27,51 @@ export default function ThoughtInput() {
 
 		setInputText('');
 		setInputTitle('');
+		setShowModal(false);
 	};
 
 	const handleOnChange = (callback) => {
 		return ({ target }) => callback(target.value);
 	};
 
-	return (
-		<form className="ThoughtInput" onSubmit={handleSubmit}>
-			<input
-				className="ThoughtInput__title"
-				id="title"
-				type="text"
-				placeholder="Title"
-				onChange={handleOnChange(setInputTitle)}
-				value={inputTitle}
-				required
-			/>
-			<textarea
-				id="thought"
-				className="ThoughtInput__input"
-				placeholder="Add a thought"
-				maxLength={MAXLENGTH}
-				value={inputText}
-				onChange={handleOnChange(setInputText)}
-				required></textarea>
-			<p className="ThoughtInput__counter">
-				{inputText.length}/{MAXLENGTH}
-			</p>
+	const handleClick = () => {
+		console.log('cancel');
+		setShowModal(false);
+	};
 
-			<input className="ThoughtInput__button" type="submit" value="Add Thought" />
-		</form>
+	return (
+		<div className="ThoughtInput">
+			<form className="ThoughtInput__form" onSubmit={handleSubmit}>
+				<input
+					className="ThoughtInput__title"
+					id="title"
+					type="text"
+					placeholder="Title"
+					onChange={handleOnChange(setInputTitle)}
+					value={inputTitle}
+					required
+				/>
+				<textarea
+					id="thought"
+					className="ThoughtInput__input"
+					placeholder="Add a thought"
+					maxLength={MAXLENGTH}
+					value={inputText}
+					onChange={handleOnChange(setInputText)}
+					required></textarea>
+				<p className="ThoughtInput__counter">
+					{inputText.length}/{MAXLENGTH}
+				</p>
+				<div className="ThoughtInput__button-group">
+					<input className="ThoughtInput__button" type="submit" value="Add Thought" />
+					<input
+						className="ThoughtInput__button"
+						type="button"
+						value="Cancel"
+						onClick={handleClick}
+					/>
+				</div>
+			</form>
+		</div>
 	);
 }

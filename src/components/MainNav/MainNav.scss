@@ -17,7 +17,8 @@
 		text-decoration: none;
 		color: inherit;
 
-		&--active + #{$MainNav}__underline {
+		&--active + #{$MainNav}__underline,
+		&:hover + #{$MainNav}__underline {
 			transform: scaleX(100%);
 		}
 	}
