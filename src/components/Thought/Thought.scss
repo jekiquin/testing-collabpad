@@ -1,3 +1,5 @@
+@use '../../partial-styles/placeholders' as *;
+
 .Thought {
 	border: 1px solid;
 	border-radius: 4px;
@@ -10,5 +12,16 @@
 		color: rgba(black, 0.8);
 		text-align: end;
 		margin-top: 1rem;
+	}
+
+	&__button-group {
+		margin-top: 1rem;
+		display: flex;
+		justify-content: flex-end;
+		gap: 0.5rem;
+	}
+
+	&__button {
+		@extend %button;
 	}
 }

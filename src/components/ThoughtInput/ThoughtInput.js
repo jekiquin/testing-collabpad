@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useJournal } from '../../context/journal-context';
 import uniqid from 'uniqid';
 import moment from 'moment';
@@ -7,10 +7,17 @@ import AddLink from '../AddLink/AddLink';
 
 const MAXLENGTH = 255;
 
-export default function ThoughtInput({ setShowModal }) {
+export default function ThoughtInput({ setShowModal, initialObj }) {
 	const [inputText, setInputText] = useState('');
 	const [inputTitle, setInputTitle] = useState('');
 	const [, setJournal] = useJournal();
+
+	useEffect(() => {
+		if (initialObj) {
+			setInputText(initialObj.thought);
+			setInputTitle(initialObj.title);
+		}
+	}, [initialObj]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -76,3 +83,7 @@ export default function ThoughtInput({ setShowModal }) {
 		</div>
 	);
 }
+
+ThoughtInput.defaultProps = {
+	initialObj: null
+};
