@@ -31,7 +31,11 @@ function Thought({ thoughtObj }) {
 		return thoughtSplit.map((str, idx) => {
 			if (idx % 2 === 0) return <span key={idx}>{str}</span>;
 			const strArr = str.split(' - ');
-			return (
+			return strArr[1].trim() === '' ? (
+				<span key={idx}>
+					<i>Broken Link</i>
+				</span>
+			) : (
 				<a key={idx} href={`#${strArr[1]}`}>
 					{strArr[0]}
 				</a>

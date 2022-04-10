@@ -1,10 +1,20 @@
 @use '../../partial-styles/placeholders' as *;
+@use '../../partial-styles/animation' as *;
 
 .Thought {
 	border: 1px solid;
 	border-radius: 4px;
 	box-shadow: 2px 2px 5px rgba(black, 0.5);
 	padding: 1rem;
+	background-color: white;
+
+	&:target {
+		animation: target-thought 5s ease-in-out 1;
+	}
+
+	&:hover {
+		background-color: white;
+	}
 
 	&__timestamp {
 		font-weight: 400;

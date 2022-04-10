@@ -8,7 +8,6 @@ export default function AddLink({ setInputText, initialObj }) {
 	const [journal] = useJournal();
 
 	const handleClick = () => {
-		console.log(linkToAdd);
 		setInputText((prevText) => `${prevText}${linkToAdd}`);
 		setSelectedOption('');
 		setLinkToAdd('');
