@@ -6,13 +6,12 @@ import Journal from './pages/Journal/Journal';
 import { journal as dummyJournal } from './dummydata/journal';
 
 function App() {
-	const [journal, setJournal] = useJournal();
+	const [, setJournal] = useJournal();
 
 	useEffect(() => {
 		setJournal(dummyJournal);
 	}, []);
 
-	console.log(journal);
 	return (
 		<div className="App">
 			<MainNav />

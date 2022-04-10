@@ -19,9 +19,9 @@ export default function AddThought() {
 				id: uniqid(),
 				title: e.target.title.value,
 				thought: e.target.thought.value,
-				timestamp: moment.utc(moment.now())
+				timestamp: moment.utc(moment.now()).format()
 			};
-			return [...prevJournal, newJournal];
+			return [newJournal, ...prevJournal];
 		});
 
 		setInputText('');
