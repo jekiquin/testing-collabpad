@@ -3,6 +3,7 @@ import { useJournal } from '../../context/journal-context';
 import uniqid from 'uniqid';
 import moment from 'moment';
 import './ThoughtInput.scss';
+import AddLink from '../AddLink/AddLink';
 
 const MAXLENGTH = 255;
 
@@ -35,7 +36,6 @@ export default function ThoughtInput({ setShowModal }) {
 	};
 
 	const handleClick = () => {
-		console.log('cancel');
 		setShowModal(false);
 	};
 
@@ -62,6 +62,7 @@ export default function ThoughtInput({ setShowModal }) {
 				<p className="ThoughtInput__counter">
 					{inputText.length}/{MAXLENGTH}
 				</p>
+				<AddLink setInputText={setInputText} />
 				<div className="ThoughtInput__button-group">
 					<input className="ThoughtInput__button" type="submit" value="Add Thought" />
 					<input
