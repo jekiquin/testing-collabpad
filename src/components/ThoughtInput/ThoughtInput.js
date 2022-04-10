@@ -30,7 +30,12 @@ export default function ThoughtInput({ setShowModal, initialObj }) {
 		};
 
 		setJournal((prevJournal) => {
-			return [newThought, ...prevJournal];
+			if (!initialObj) return [newThought, ...prevJournal];
+			const copyJournal = JSON.parse(JSON.stringify(prevJournal));
+			const thoughtToEdit = copyJournal.find((thought) => thought.id === initialObj.id);
+			thoughtToEdit.title = newThought.title;
+			thoughtToEdit.thought = newThought.thought;
+			return copyJournal;
 		});
 
 		setInputText('');
@@ -69,9 +74,13 @@ export default function ThoughtInput({ setShowModal, initialObj }) {
 				<p className="ThoughtInput__counter">
 					{inputText.length}/{MAXLENGTH}
 				</p>
-				<AddLink setInputText={setInputText} />
+				<AddLink setInputText={setInputText} initialObj={initialObj} />
 				<div className="ThoughtInput__button-group">
-					<input className="ThoughtInput__button" type="submit" value="Add Thought" />
+					<input
+						className="ThoughtInput__button"
+						type="submit"
+						value={initialObj ? 'Edit Thought' : 'Add Thought'}
+					/>
 					<input
 						className="ThoughtInput__button"
 						type="button"

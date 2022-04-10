@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { useJournal } from '../../context/journal-context';
 import './AddLink.scss';
 
-export default function AddLink({ setInputText }) {
+export default function AddLink({ setInputText, initialObj }) {
 	const [selectedOption, setSelectedOption] = useState('');
 	const [linkToAdd, setLinkToAdd] = useState('');
 	const [journal] = useJournal();
@@ -21,12 +21,14 @@ export default function AddLink({ setInputText }) {
 
 	const displayOptions = useMemo(
 		() =>
-			journal.map((thoughtObj) => (
-				<option key={thoughtObj.id} value={thoughtObj.id}>
-					{thoughtObj.title}
-				</option>
-			)),
-		[journal]
+			journal
+				.filter((thoughtObj) => thoughtObj.id !== initialObj?.id)
+				.map((thoughtObj) => (
+					<option key={thoughtObj.id} value={thoughtObj.id}>
+						{thoughtObj.title}
+					</option>
+				)),
+		[journal, initialObj]
 	);
 
 	return (
@@ -51,3 +53,7 @@ export default function AddLink({ setInputText }) {
 		</div>
 	);
 }
+
+AddLink.defaultProps = {
+	initialObj: null
+};

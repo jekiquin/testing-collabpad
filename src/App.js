@@ -14,7 +14,7 @@ function App() {
 			(a, b) => moment(b.timestamp) - moment(a.timestamp)
 		);
 		setJournal(sortedJournal);
-	}, []);
+	}, [setJournal]);
 
 	return (
 		<div className="App">
